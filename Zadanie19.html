@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+.blad { color:red; font-size:12px; }
+</style>
+
+</head>
+<body>
+
+<h3>Rejestracja</h3>
+
+Imię:<br>
+<input id="i"><br>
+<div class="blad" id="b1"></div>
+
+Email:<br>
+<input id="e"><br>
+<div class="blad" id="b2"></div>
+
+Hasło:<br>
+<input type="password" id="h"><br>
+<div class="blad" id="b3"></div>
+
+Powtórz hasło:<br>
+<input type="password" id="h2"><br>
+<div class="blad" id="b4"></div>
+
+<br>
+<button id="ok" disabled>Zarejestruj</button>
+
+<script>
+
+$("input").keyup(function(){
+
+let good = true;
+
+
+let imie = $("#i").val();
+if(imie == ""){
+$("#b1").text("puste pole");
+good = false;
+}else{
+$("#b1").text("");
+}
+
+
+let mail = $("#e").val();
+if(mail == "" || mail.indexOf("@") == -1){
+$("#b2").text("bledny email");
+good = false;
+}else{
+$("#b2").text("");
+}
+
+
+let haslo = $("#h").val();
+if(haslo.length < 6){
+$("#b3").text("za krotkie");
+good = false;
+}else{
+$("#b3").text("");
+}
+
+
+let haslo2 = $("#h2").val();
+if(haslo2 != haslo || haslo2 == ""){
+$("#b4").text("nie takie samo");
+good = false;
+}else{
+$("#b4").text("");
+}
+
+
+$("#ok").prop("disabled", !good);
+
+});
+
+</script>
+
+</body>
+</html>
